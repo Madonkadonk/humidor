@@ -1,0 +1,391 @@
+Connecting to database specified by database.yml
+  [1m[36m (2.1ms)[0m  [1mselect sqlite_version(*)[0m
+  [1m[35m (47.4ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (30.2ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (17.2ms)[0m  SELECT "schema_migrations"."version" FROM "schema_migrations" 
+Connecting to database specified by database.yml
+  [1m[36m (21.4ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+  [1m[35m (2.0ms)[0m  select sqlite_version(*)
+  [1m[36m (47.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (1011.0ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36m (1.8ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (31.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('0')
+Connecting to database specified by database.yml
+  [1m[36m (17.3ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations" [0m
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 192.168.1.200 at 2013-06-07 14:37:48 +0000
+
+ActionController::RoutingError (No route matches [GET] "/"):
+  actionpack (3.2.13) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/show_exceptions.rb:56:in `call'
+  railties (3.2.13) lib/rails/rack/logger.rb:32:in `call_app'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `block in call'
+  activesupport (3.2.13) lib/active_support/tagged_logging.rb:22:in `tagged'
+  railties (3.2.13) lib/rails/rack/logger.rb:16:in `call'
+  quiet_assets (1.0.2) lib/quiet_assets.rb:18:in `call_with_quiet_assets'
+  actionpack (3.2.13) lib/action_dispatch/middleware/request_id.rb:22:in `call'
+  rack (1.4.5) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.4.5) lib/rack/runtime.rb:17:in `call'
+  activesupport (3.2.13) lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+  rack (1.4.5) lib/rack/lock.rb:15:in `call'
+  actionpack (3.2.13) lib/action_dispatch/middleware/static.rb:63:in `call'
+  railties (3.2.13) lib/rails/engine.rb:479:in `call'
+  railties (3.2.13) lib/rails/application.rb:223:in `call'
+  rack (1.4.5) lib/rack/content_length.rb:14:in `call'
+  railties (3.2.13) lib/rails/rack/log_tailer.rb:17:in `call'
+  rack (1.4.5) lib/rack/handler/webrick.rb:59:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:138:in `service'
+  /usr/local/rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/httpserver.rb:94:in `run'
+  /usr/local/rvm/rubies/ruby-1.9.3-p429/lib/ruby/1.9.1/webrick/server.rb:191:in `block in start_thread'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (52.0ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 14:51:50 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (280.6ms)
+  Rendered test/mail.html.erb within layouts/application (5.6ms)
+Compiled test.css  (31ms)  (pid 26823)
+Compiled application.css  (614ms)  (pid 26823)
+Compiled jquery.js  (372ms)  (pid 26823)
+Compiled jquery_ujs.js  (7ms)  (pid 26823)
+Compiled test.js  (4515ms)  (pid 26823)
+Compiled application.js  (5406ms)  (pid 26823)
+  Rendered layouts/_navigation.html.erb (611.4ms)
+Completed 500 Internal Server Error in 20106ms
+
+ActionView::Template::Error (undefined local variable or method `root_path' for #<#<Class:0x1c380c0>:0x1a45220>):
+    1: <%= link_to "Humidor Server", root_path, :class => 'brand' %>
+  app/views/layouts/_navigation.html.erb:1:in `_app_views_layouts__navigation_html_erb__978180618_16446108'
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__978180618_15898944'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (36.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (22.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/template_error.erb within rescues/layout (157.8ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 14:54:09 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (46.3ms)
+  Rendered test/mail.html.erb within layouts/application (5.6ms)
+  Rendered layouts/_navigation.html.erb (5.2ms)
+  Rendered layouts/_messages.html.erb (9.1ms)
+Completed 200 OK in 13292ms (Views: 642.7ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 14:56:24 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (263.1ms)
+
+Sent mail to matthew.k.madonna@gmail.com (211ms)
+Date: Fri, 07 Jun 2013 14:56:38 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1f4a63bcc3_6af07661a0659a7@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+  Rendered test/mail.html.erb within layouts/application (15.4ms)
+  Rendered layouts/_navigation.html.erb (5.8ms)
+  Rendered layouts/_messages.html.erb (9.5ms)
+Completed 200 OK in 14431ms (Views: 941.1ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:05:11 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (311.5ms)
+
+Sent mail to matthew.k.madonna@gmail.com (212ms)
+Date: Fri, 07 Jun 2013 15:05:24 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1f6b41e8d8_6ed6137cbd472b3@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+  Rendered test/mail.html.erb within layouts/application (7.0ms)
+  Rendered layouts/_navigation.html.erb (6.0ms)
+  Rendered layouts/_messages.html.erb (9.7ms)
+Completed 200 OK in 13412ms (Views: 917.7ms | ActiveRecord: 0.0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:10:08 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (272.1ms)
+
+Sent mail to matthew.k.madonna@gmail.com (866ms)
+Date: Fri, 07 Jun 2013 15:10:21 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1f7dd9c537_7131e3fba4774e@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 12956ms
+
+Net::SMTPAuthenticationError (530-5.5.1 Authentication Required. Learn more at
+):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (32.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (20.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (132.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:15:56 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (51.4ms)
+
+Sent mail to matthew.k.madonna@gmail.com (791ms)
+Date: Fri, 07 Jun 2013 15:16:09 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1f93980b05_73321262f644505d@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 13405ms
+
+Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (31.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (21.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (135.2ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:22:49 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (43.8ms)
+
+Sent mail to matthew.k.madonna@gmail.com (435ms)
+Date: Fri, 07 Jun 2013 15:23:02 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1fad67745a_766c71502c7634b@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 12959ms
+
+OpenSSL::SSL::SSLError (SSL_connect returned=1 errno=0 state=unknown state: unknown protocol):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (31.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (21.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (136.3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:26:03 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (279.4ms)
+
+Sent mail to matthew.k.madonna@gmail.com (554ms)
+Date: Fri, 07 Jun 2013 15:26:16 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1fb98929b6_77cf157905c18454@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 12870ms
+
+OpenSSL::SSL::SSLError (SSL_connect returned=1 errno=0 state=unknown state: unknown protocol):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (30.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (27.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (143.7ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:27:44 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (266.3ms)
+
+Sent mail to matthew.k.madonna@gmail.com (812ms)
+Date: Fri, 07 Jun 2013 15:27:57 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1fbfd96301_78901285e60614a8@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 12932ms
+
+Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (31.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (29.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (140.2ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:31:35 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (43.6ms)
+
+Sent mail to matthew.k.madonna@gmail.com (803ms)
+Date: Fri, 07 Jun 2013 15:31:48 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1fce4ee3fa_79c7117d25483641@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 13241ms
+
+Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (32.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (29.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (151.8ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:37:51 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (43.9ms)
+
+Sent mail to matthew.k.madonna@gmail.com (829ms)
+Date: Fri, 07 Jun 2013 15:38:05 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1fe5d23eb8_7d9f12e31cc28885@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 13483ms
+
+Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (30.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (23.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (138.7ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:41:51 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (44.1ms)
+
+Sent mail to matthew.k.madonna@gmail.com (986ms)
+Date: Fri, 07 Jun 2013 15:42:05 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1ff4d7844_7ef2fae45c4442@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+Completed 500 Internal Server Error in 13454ms
+
+Net::SMTPAuthenticationError (535-5.7.8 Username and Password not accepted. Learn more at
+):
+  app/controllers/test_controller.rb:3:in `mail'
+
+
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_trace.erb (30.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (22.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p429/gems/actionpack-3.2.13/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (138.5ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/test/mail" for 192.168.1.200 at 2013-06-07 15:44:06 +0000
+Processing by TestController#mail as HTML
+  Rendered hello_mailer/hello_mail.text.erb (337.6ms)
+
+Sent mail to matthew.k.madonna@gmail.com (3581ms)
+Date: Fri, 07 Jun 2013 15:44:18 +0000
+From: madonkadonk@gmail.com
+To: matthew.k.madonna@gmail.com
+Message-ID: <51b1ffd2b32ed_13a1135f5c5384e@raspberrypi.mail>
+Subject: Hello World!
+Mime-Version: 1.0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+The email is woring!
+
+  Rendered test/mail.html.erb within layouts/application (7.2ms)
+  Rendered layouts/_navigation.html.erb (6.0ms)
+  Rendered layouts/_messages.html.erb (9.1ms)
+Completed 200 OK in 16728ms (Views: 996.7ms | ActiveRecord: 0.0ms)
