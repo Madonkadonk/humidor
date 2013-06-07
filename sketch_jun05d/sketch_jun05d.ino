@@ -35,7 +35,6 @@ void setup(void)
   // start serial port
   lcd.begin (20,4); //  <<----- My LCD was 16x
   Serial.begin(9600);
-  Serial.println("DHT22 Library Demo");
   lcd.setBacklightPin(BACKLIGHT_PIN,POSITIVE);
   lcd.setBacklight(HIGH);
   lcd.home (); // go home
@@ -49,65 +48,57 @@ void loop(void)
   // The sensor can only be read from every 1-2s, and requires a minimum
   // 2s warm-up after power-on.
   delay(2000);
-  
-  Serial.print("Requesting data...");
+  out = "{\"distance\":";
   errorCode = myDHT22.readData();
   unsigned int uS = sonar.ping(); // Send ping, get ping time in microseconds (uS).
   char buf3[128];
   sprintf(buf3, "Distance %d cm", uS / US_ROUNDTRIP_CM);
-  Serial.print(uS / US_ROUNDTRIP_CM); // Convert ping time to distance in cm and print result (0 = outside set distance range)
-  Serial.println("cm");
+  out = out + uS / US_ROUNDTRIP_CM;
+  //sprintf(out + strlen(out), "%d", uS / US_ROUNDTRIP_CM);
   lcd.setCursor(0, 3);
   lcd.print(buf3);
 
   switch(errorCode)
   {
     case DHT_ERROR_NONE:
-      Serial.print("Got Data ");
-      Serial.print(myDHT22.getTemperatureC());
-      Serial.print("C ");
-      Serial.print(myDHT22.getHumidity());
-      Serial.println("%");
       
       lcd.setCursor(0,1);
-     char buf[128];
+      char buf[128];
       sprintf(buf, "Temperature %hi.%01hi C", 
                    myDHT22.getTemperatureCInt()/10, abs(myDHT22.getTemperatureCInt()%10));
+      out = out + ",\"temp\": " + myDHT22.getTemperatureCInt()/10;
+      out = out + "." + abs(myDHT22.getTemperatureCInt()%10);
+      //sprinft(out + strlen(out), ",temp: %hi.%01hi,", myDHT22.getTemperatureCInt()/10, abs(myDHT22.getTemperatureCInt()%10));
+
       lcd.print(buf);
       lcd.setCursor(0, 2);
       char buf2[128];
       sprintf(buf2, "Humidity %i.%01i %% RH",
                    myDHT22.getHumidityInt()/10, myDHT22.getHumidityInt()%10); 
+      //sprintf(out + strlen(out), ",humid: %i.%01i", myDHT22.getHumidityInt()/10, myDHT22.getHumidityInt()%10); 
+      out = out + ",\"humid\": " + myDHT22.getHumidityInt()/10;
+      out = out + "." + myDHT22.getHumidityInt()%10;
       lcd.print(buf2);
       // Alternately, with integer formatting which is clumsier but more compact to store and
 	  // can be compared reliably for equality:
 	  //	  
       break;
     case DHT_ERROR_CHECKSUM:
-      Serial.print("check sum error ");
-      Serial.print(myDHT22.getTemperatureC());
-      Serial.print("C ");
-      Serial.print(myDHT22.getHumidity());
-      Serial.println("%");
-      
       break;
     case DHT_BUS_HUNG:
-      Serial.println("BUS Hung ");
       break;
     case DHT_ERROR_NOT_PRESENT:
-      Serial.println("Not Present ");
       break;
     case DHT_ERROR_ACK_TOO_LONG:
-      Serial.println("ACK time out ");
       break;
     case DHT_ERROR_SYNC_TIMEOUT:
-      Serial.println("Sync Timeout ");
       break;
     case DHT_ERROR_DATA_TIMEOUT:
-      Serial.println("Data Timeout ");
       break;
     case DHT_ERROR_TOOQUICK:
-      Serial.println("Polled to quick ");
       break;
   }
+  out = out + "}";
+  //sprintf(out + strlen(out), "}");
+  Serial.println(out);
 }
