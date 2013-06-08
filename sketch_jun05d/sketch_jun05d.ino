@@ -19,11 +19,17 @@
 #define D6_pin  6
 #define D7_pin  7
 
+#define humid  5
+#define light  6
+
 #define TRIGGER_PIN  12  // Arduino pin tied to trigger pin on the ultrasonic sensor.
 #define ECHO_PIN     11  // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 200 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
 
 String out;
+boolean flashing = true;
+boolean empty = false;
+boolean lowH = false;
 
 LiquidCrystal_I2C	lcd(I2C_ADDR,En_pin,Rw_pin,Rs_pin,D4_pin,D5_pin,D6_pin,D7_pin);
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
@@ -34,6 +40,8 @@ void setup(void)
 {
   // start serial port
   lcd.begin (20,4); //  <<----- My LCD was 16x
+  pinMode(humid, OUTPUT);
+  pinMode(light, OUTPUT);
   Serial.begin(9600);
   lcd.setBacklightPin(BACKLIGHT_PIN,POSITIVE);
   lcd.setBacklight(HIGH);
@@ -55,6 +63,14 @@ void loop(void)
   sprintf(buf3, "Distance %d cm", uS / US_ROUNDTRIP_CM);
   out = out + uS / US_ROUNDTRIP_CM;
   //sprintf(out + strlen(out), "%d", uS / US_ROUNDTRIP_CM);
+  if (uS /US_ROUNDTRIP_CM > 15) {
+    digitalWrite(light, flashing);
+    empty = true;
+    flashing = !flashing;
+  } else {
+    digitalWrite(light, HIGH);
+    empty = false;
+  }
   lcd.setCursor(0, 3);
   lcd.print(buf3);
 
@@ -79,6 +95,17 @@ void loop(void)
       out = out + ",\"humid\": " + myDHT22.getHumidityInt()/10;
       out = out + "." + myDHT22.getHumidityInt()%10;
       lcd.print(buf2);
+       if(myDHT22.getHumidityInt()/10 < 68 && !empty && !lowH) {
+        digitalWrite(humid, HIGH);
+        lowH = true;
+      } else {
+        if(myDHT22.getHumidityInt()/10 < 70 && !empty) {
+          digitalWrite(humid, HIGH);
+        } else {
+          lowH = false;
+          digitalWrite(humid, LOW);
+        }
+      }
       // Alternately, with integer formatting which is clumsier but more compact to store and
 	  // can be compared reliably for equality:
 	  //	  
