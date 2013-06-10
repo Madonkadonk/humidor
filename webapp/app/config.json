@@ -1,0 +1,37 @@
+{
+  "controllers":
+  {
+    "default" :
+    {
+      "views" :
+      {
+        "default" :
+        {
+          "reroute" :
+          {
+            "route" : "main",
+            "action" : "index"
+          }
+        }
+      }
+    },
+    "main" :
+    {
+      "views" :
+      {
+        "index" :
+        {
+          "containers" :
+          {
+            "container-1" : ["container"]
+          },
+          "modules" :
+          {
+            "m-display" : {"parentID" : "container-1", "title" : "Humidor", "template" : "display", "model" : "DisplayModel", "dataSource" : "http://192.168.1.113:3000/humid/getCurrent?callback=?"},
+            "m-charts" : {"parentID" : "container-1", "title" : "Charts", "template" : "charts", "model" : "ChartModel", "dataSource" : "http://192.168.1.113:3000/humid/getSaved?callback=?"}
+          }
+        }
+      }
+    }
+  }
+}

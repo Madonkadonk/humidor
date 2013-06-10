@@ -1,0 +1,2 @@
+module HumidHelper
+end
