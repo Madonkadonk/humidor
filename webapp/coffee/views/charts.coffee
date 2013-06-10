@@ -34,6 +34,6 @@ define ['models/namespace', 'highcharts'], (namespace, Highcharts) ->
 					valueSuffix:
 						'&deg;C'
 				series: [{
-						name: 'Temp'
+						name: 'Temp',
 						data: tempJson
-				]}
+				}]

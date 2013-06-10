@@ -38,10 +38,12 @@ define(['models/namespace', 'highcharts'], function(namespace, Highcharts) {
         tooltip: {
           valueSuffix: '&deg;C'
         },
-        series: {
-          name: 'Temp',
-          data: tempJson
-        }
+        series: [
+          {
+            name: 'Temp',
+            data: tempJson
+          }
+        ]
       });
     };
 
