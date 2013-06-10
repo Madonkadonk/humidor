@@ -4,6 +4,7 @@ define ['models/BaseModel', 'models/namespace', 'views/display'], (BaseModel, na
         namespace.disp = {}
         setInterval(() ->
           $.getJSON url, (dat) ->
+            namespace.disp.created_at = dat.created_at
             namespace.disp.temp = dat.temp
             namespace.disp.level = dat.level
             namespace.disp.humid = dat.humid

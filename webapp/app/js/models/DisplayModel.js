@@ -16,6 +16,7 @@ define(['models/BaseModel', 'models/namespace', 'views/display'], function(BaseM
       namespace.disp = {};
       setInterval(function() {
         return $.getJSON(url, function(dat) {
+          namespace.disp.created_at = dat.created_at;
           namespace.disp.temp = dat.temp;
           namespace.disp.level = dat.level;
           return namespace.disp.humid = dat.humid;
