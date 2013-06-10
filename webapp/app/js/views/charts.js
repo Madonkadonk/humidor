@@ -19,6 +19,7 @@ define(['models/namespace', 'highcharts'], function(namespace, Highcharts) {
             load: function() {
               setInterval(function() {
                 $.getJSON('http://192.168.1.113:3000/humid/getCurrent?callback=?', function(dat) {
+                  console.log(this);
                   this.series[0].addPoint([new Date(dat.created_at), dat.temp], true, true);
                   return true;
                 });

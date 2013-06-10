@@ -18,8 +18,7 @@ define(['models/BaseModel', 'models/namespace', 'views/display'], function(BaseM
         return $.getJSON(url, function(dat) {
           namespace.disp.temp = dat.temp;
           namespace.disp.level = dat.level;
-          namespace.disp.humid = dat.humid;
-          return console.log('call');
+          return namespace.disp.humid = dat.humid;
         });
       }, 2000);
       return display = new Display(id, title);
