@@ -19,20 +19,24 @@ define(['models/namespace', 'highcharts'], function(namespace, Highcharts) {
         return levelJson.push([Date.parse(dt.toUTCString()), val.level]);
       });
       console.log(tempJson);
-      $('#' + this.id + ' .temp').highcharts({
+      return $('#' + this.id + ' .temp').highcharts({
         chart: {
           type: 'line',
           zoomType: 'x',
           events: {
             load: function() {
-              var series;
-              series = this.series[0];
+              var seriesHumid, seriesLevel, seriesTemp;
+              seriesTemp = this.series[0];
+              seriesHumid = this.series[1];
+              seriesLevel = this.series[2];
               setInterval(function() {
                 var dt;
                 console.log(namespace.disp);
                 dt = new Date(namespace.disp.created_at);
                 console.log(Date.parse(dt.toUTCString()));
-                series.addPoint([Date.parse(dt.toUTCString()), namespace.disp.temp], true, true);
+                seriesTemp.addPoint([Date.parse(dt.toUTCString()), namespace.disp.temp], true, true);
+                seriesHumid.addPoint([Date.parse(dt.toUTCString()), namespace.disp.humid], true, true);
+                seriesLevel.addPoint([Date.parse(dt.toUTCString()), namespace.disp.level], true, true);
                 return true;
               }, 2000);
               return true;
@@ -45,90 +49,37 @@ define(['models/namespace', 'highcharts'], function(namespace, Highcharts) {
           title: 'Date',
           maxZoom: 10000
         },
-        yAxis: {
-          title: 'Temprature (*C)'
-        },
         tooltip: {
-          valueSuffix: '*C'
+          shared: true,
+          crosshairs: true,
+          formatter: function() {
+            var s;
+            s = new Date(this.x).toLocaleString();
+            $.each(this.points, function(i, point) {
+              return s += '<br/>' + point.series.name + ': ' + point.y + ' ' + point.series.tooltipOptions.label;
+            });
+            return s;
+          }
         },
         series: [
           {
             name: 'Temp',
-            data: tempJson
-          }
-        ]
-      });
-      $('#' + this.id + ' .humid').highcharts({
-        chart: {
-          type: 'line',
-          zoomType: 'x',
-          events: {
-            load: function() {
-              var series;
-              series = this.series[0];
-              setInterval(function() {
-                var dt;
-                dt = new Date(namespace.disp.created_at);
-                series.addPoint([Date.parse(dt.toUTCString()), namespace.disp.humid], true, true);
-                return true;
-              }, 2000);
-              return true;
+            data: tempJson,
+            tooltip: {
+              label: '*C'
             }
-          }
-        },
-        title: 'Humidity',
-        xAxis: {
-          type: 'datetime',
-          title: 'Date',
-          maxZoom: 10000
-        },
-        yAxis: {
-          title: 'Humidity (%)'
-        },
-        tooltip: {
-          valueSuffix: '%'
-        },
-        series: [
-          {
+          }, {
             name: 'Humid',
-            data: tempJson
-          }
-        ]
-      });
-      return $('#' + this.id + ' .level').highcharts({
-        chart: {
-          type: 'line',
-          zoomType: 'x',
-          events: {
-            load: function() {
-              var series;
-              series = this.series[0];
-              setInterval(function() {
-                var dt;
-                dt = new Date(namespace.disp.created_at);
-                series.addPoint([Date.parse(dt.toUTCString()), namespace.disp.level], true, true);
-                return true;
-              }, 2000);
-              return true;
+            data: humidJson,
+            tooltip: {
+              label: '%'
             }
-          }
-        },
-        title: 'Distance',
-        xAxis: {
-          type: 'datetime',
-          title: 'Date',
-          maxZoom: 10000
-        },
-        yAxis: {
-          title: 'Distance (cm (ish))'
-        },
-        tooltip: {
-          valueSuffix: 'cm (ish)'
-        },
-        series: [
-          {
+          }, {
             name: 'Distance',
-            data: levelJson
+            data: levelJson,
+            tooltip: {
+              label: 'cm (ish)'
+            }
           }
         ]
       });

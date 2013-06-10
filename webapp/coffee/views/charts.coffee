@@ -28,12 +28,16 @@ define ['models/namespace', 'highcharts'], (namespace, Highcharts) ->
 					zoomType: 'x'
 					events:
 						load: ()->
-							series = this.series[0]
+							seriesTemp = this.series[0]
+							seriesHumid = this.series[1]
+							seriesLevel = this.series[2]
 							setInterval( ()->
 								console.log namespace.disp
 								dt = new Date(namespace.disp.created_at)
 								console.log Date.parse(dt.toUTCString())
-								series.addPoint([Date.parse(dt.toUTCString()), namespace.disp.temp], true, true)
+								seriesTemp.addPoint([Date.parse(dt.toUTCString()), namespace.disp.temp], true, true)
+								seriesHumid.addPoint([Date.parse(dt.toUTCString()), namespace.disp.humid], true, true)
+								seriesLevel.addPoint([Date.parse(dt.toUTCString()), namespace.disp.level], true, true)
 								return true
 							, 2000)
 							return true
@@ -43,73 +47,29 @@ define ['models/namespace', 'highcharts'], (namespace, Highcharts) ->
 					type: 'datetime'
 					title: 'Date'
 					maxZoom: 10000
-				yAxis:
-					title:
-						'Temprature (*C)'
 				tooltip:
-					valueSuffix:
-						'*C'
+					shared: true
+					crosshairs: true
+					formatter: () ->
+						s = new Date(this.x).toLocaleString()
+						$.each this.points, (i, point) ->
+							s += '<br/>' + point.series.name + ': ' + point.y + ' ' + point.series.tooltipOptions.label
+						s
 				series: [{
 						name: 'Temp',
 						data: tempJson
-				}]
-
-			$('#' + @id + ' .humid').highcharts
-				chart:
-					type: 'line'
-					zoomType: 'x'
-					events:
-						load: ()->
-							series = this.series[0]
-							setInterval( ()->
-								dt = new Date(namespace.disp.created_at)
-								series.addPoint([Date.parse(dt.toUTCString()), namespace.disp.humid], true, true)
-								return true
-							, 2000)
-							return true
-				title:
-					'Humidity'
-				xAxis:
-					type: 'datetime'
-					title: 'Date'
-					maxZoom: 10000
-				yAxis:
-					title:
-						'Humidity (%)'
-				tooltip:
-					valueSuffix:
-						'%'
-				series: [{
+						tooltip:
+							label: '*C'
+				},
+				{
 						name: 'Humid',
-						data: tempJson
-				}]
-
-			$('#' + @id + ' .level').highcharts
-				chart:
-					type: 'line'
-					zoomType: 'x'
-					events:
-						load: ()->
-							series = this.series[0]
-							setInterval( ()->
-								dt = new Date(namespace.disp.created_at)
-								series.addPoint([Date.parse(dt.toUTCString()), namespace.disp.level], true, true)
-								return true
-							, 2000)
-							return true
-				title:
-					'Distance'
-				xAxis:
-					type: 'datetime'
-					title: 'Date'
-					maxZoom: 10000
-				yAxis:
-					title:
-						'Distance (cm (ish))'
-				tooltip:
-					valueSuffix:
-						'cm (ish)'
-				series: [{
+						data: humidJson
+						tooltip:
+							label: '%'
+				},
+				{
 						name: 'Distance',
 						data: levelJson
+						tooltip:
+							label: 'cm (ish)'
 				}]
